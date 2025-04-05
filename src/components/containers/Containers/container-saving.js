@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import FormSaving from '../../forms/form-saving'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 const ContainerSavingStyled = styled.div`
     width: 80%;
@@ -22,10 +22,14 @@ const ContainerSavingStyled = styled.div`
 `
 
 function ContainerSaving() {
-    localStorage.setItem("goal", 1000)
     const [savings, setSavings] = useState(0)
-    const [goal, setGoal] = useState(localStorage.getItem("goal"))
-
+    useEffect(() => {
+        const savingsLocal = localStorage.getItem("michi-savings");
+        if (savingsLocal !== undefined && savingsLocal !== null) {
+          setSavings(parseFloat(savingsLocal));
+        }
+    }, [])
+    const goal = localStorage.getItem("michi-goal")
     const percentage = (savings /goal) * 100
     const pathImg = percentage <= 25 ? "/assets/thin.png" : 
                     percentage <= 50 ? "/assets/normal.png" :

@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import {Button} from './button'
 import InputText from './input-text'
 import {useState, useRef} from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const FormSavingStyled = styled.form`
+const FormGoalStyled = styled.form`
     width: 100%;
     border-radius: 0.5rem;
     padding-inline: 2rem;
@@ -23,37 +24,36 @@ const FormSavingStyled = styled.form`
     }
 `
 
-function FormSaving({...props}) {
-    const [savingsMount, setSavingsMount] = useState(0)
+function FormGoal({...props}) {
+    const navigate = useNavigate();
+    const [goalMount, setGoalMount] = useState(0)
     const form = useRef(null)
 
     const handleSubmit = (e) => {   
         e.preventDefault()
-        if(savingsMount <= 0){
+        if(goalMount <= 0){
             alert("Ingrese un monto mayor a 0")
             return
         }
-        const savings = props.savings + parseFloat(savingsMount)
-        props.setSavings(savings)
-        localStorage.setItem("michi-savings", savings)
-
-        setSavingsMount("")
+        localStorage.setItem("michi-goal", goalMount)
+        setGoalMount("")
+        navigate('/saving');
     }
     return (
-        <FormSavingStyled onSubmit={handleSubmit} ref={form}>
+        <FormGoalStyled onSubmit={handleSubmit} ref={form}>
             <InputText
-                placeholder='Ingresse los ahorro de hoy'
-                name='savingsMount'
+                placeholder='Ingresse sun meta de ahorro'
+                name='goalMount'
                 type='text'
-                value={(savingsMount === 0) ? "" : savingsMount}
-                onChange={(e) => setSavingsMount(e.target.value)}
+                value={(goalMount === 0) ? "" : goalMount}
+                onChange={(e) => setGoalMount(e.target.value)}
 
             />
             <Button
-                text='Guardar Dinerito'
+                text='Guardar Meta'
             />
-        </FormSavingStyled>
+        </FormGoalStyled>
     )
 }
 
-export default FormSaving
+export default FormGoal
