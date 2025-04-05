@@ -19,6 +19,14 @@ const ContainerSavingStyled = styled.div`
         object-fit: cover;
         border-radius: 1rem
     }
+
+    @media (max-width: 600px) {
+        &{
+            width: 100%;
+            padding: 2rem;
+        }
+    
+    }
 `
 
 function ContainerSaving() {

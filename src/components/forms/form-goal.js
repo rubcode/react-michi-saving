@@ -19,6 +19,7 @@ const FormGoalStyled = styled.form`
     @media (max-width: 600px) {
         &{
             flex-direction: column;
+            padding: 0;
         }
     
     }

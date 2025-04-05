@@ -14,6 +14,7 @@ const InputText = styled.input`
     @media (max-width: 600px) {
         &{
             width: 100%;
+            max-width: 300px;
         }
     
     }

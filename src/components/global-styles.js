@@ -73,6 +73,13 @@ const GlobalStylesStyled = createGlobalStyle`
             width: 100%;
             text-align: center;
             justify-content: center;
+            font-size: 1.8rem;
+        }
+        .subtitle{
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
     
     }

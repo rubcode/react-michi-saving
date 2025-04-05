@@ -13,14 +13,23 @@ const ContainerGoalStyled = styled.div`
     justify-content: center;
     gap: 1.5rem;
     flex-direction: column;
+    @media (max-width: 600px) {
+        &{
+            width: 100%;
+            padding: 2rem;
+        }
+    
+    }
+
 `
 
 function ContainerGoal() {
     
     const navigate = useNavigate();
     useEffect(() => {
+        localStorage.removeItem("michi-goal");
+        localStorage.removeItem("michi-savings");
         const goal = localStorage.getItem("michi-goal"); 
-        console.log(goal)
         if (goal !== undefined && goal !== null) {
           navigate('/saving');
         }

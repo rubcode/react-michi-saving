@@ -6,7 +6,6 @@ import {useState, useRef} from 'react'
 const FormSavingStyled = styled.form`
     width: 100%;
     border-radius: 0.5rem;
-    padding-inline: 2rem;
     padding-block: 1rem;
     display: flex;
     justify-content: center;
@@ -15,9 +14,11 @@ const FormSavingStyled = styled.form`
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
+
     @media (max-width: 600px) {
         &{
             flex-direction: column;
+            padding: 0
         }
     
     }
