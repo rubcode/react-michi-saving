@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import FormSaving from '../../forms/form-saving'
 import { useState,useEffect } from 'react'
+import Navbar from './navbar'
+import Menu from '../menu'
 
 const ContainerSavingStyled = styled.div`
     width: 80%;
@@ -31,6 +33,8 @@ const ContainerSavingStyled = styled.div`
 
 function ContainerSaving() {
     const [savings, setSavings] = useState(0)
+    const [activeMenu, setActiveMenu] = useState(false);
+    const className = activeMenu ? 'active' : '';
     useEffect(() => {
         const savingsLocal = localStorage.getItem("michi-savings");
         if (savingsLocal !== undefined && savingsLocal !== null) {
@@ -43,15 +47,20 @@ function ContainerSaving() {
                     percentage <= 50 ? "/assets/normal.png" :
                     percentage <= 75 ? "/assets/fat.png" : "/assets/fatter.png"
     return (
-        <ContainerSavingStyled>
-            <h1 className="title">Registre sus michi coins 😺💰</h1>
-            <img src={pathImg} alt="Michi" />
-            <h2 className="subtitle">Total Ahorrado: ${savings.toFixed(2)}</h2>
-            <FormSaving 
-                savings={savings}
-                setSavings={setSavings}
-            />
-        </ContainerSavingStyled>
+        <>
+            <Navbar setActiveMenu={setActiveMenu}/>
+            <Menu className={className}/>
+            <ContainerSavingStyled>
+                <h1 className="title">Registre sus michi coins 😺💰</h1>
+                <img src={pathImg} alt="Michi" />
+                <h2 className="subtitle">Total Ahorrado: ${savings.toFixed(2)}</h2>
+                <FormSaving 
+                    savings={savings}
+                    setSavings={setSavings}
+                />
+            </ContainerSavingStyled>
+        </>
+        
     )
 }
 

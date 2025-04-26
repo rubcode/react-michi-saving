@@ -43,7 +43,7 @@ function FormGoal({...props}) {
     return (
         <FormGoalStyled onSubmit={handleSubmit} ref={form}>
             <InputText
-                placeholder='Ingresse sun meta de ahorro'
+                placeholder='Ingresse su meta de ahorro'
                 name='goalMount'
                 type='text'
                 value={(goalMount === 0) ? "" : goalMount}

@@ -2,10 +2,13 @@ import styled from 'styled-components'
 import FormGoal from '../../forms/form-goal'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react'
+import { useState } from 'react';
+import Navbar from './navbar';
+import Menu from '../menu';
 
 const ContainerGoalStyled = styled.div`
     width: 80%;
-    height: 100vh;
+    height: calc(100vh - 80px);
     margin: 0 auto;
     padding: 4rem;
     display: flex;
@@ -26,6 +29,8 @@ const ContainerGoalStyled = styled.div`
 function ContainerGoal() {
     
     const navigate = useNavigate();
+    const [activeMenu, setActiveMenu] = useState(false);
+    const className = activeMenu ? 'active' : '';
     useEffect(() => {
         localStorage.removeItem("michi-goal");
         localStorage.removeItem("michi-savings");
@@ -35,10 +40,17 @@ function ContainerGoal() {
         }
       }, [navigate]);
     return (
-        <ContainerGoalStyled>
-            <h1 className="title">Bienvenido a Michi Saving 😺💰</h1>
-            <FormGoal />
-        </ContainerGoalStyled>
+        <>
+            <Navbar 
+                setActiveMenu={setActiveMenu}
+            />
+            <Menu className={className}/>
+            <ContainerGoalStyled>
+                <h1 className="title">Bienvenido a Michi Saving 😺💰</h1>
+                <FormGoal />
+            </ContainerGoalStyled>
+        </>
+        
     )
 }
 
