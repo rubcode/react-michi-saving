@@ -16,20 +16,16 @@ const TableStyled = styled.table`
     }
 `
 
-function Table() {
+function Table({...props}) {
     const headers = ["No","Fecha","Monto"]
-    const data = [
-        {no: "😺", date: "2025-01-10", amount: 1000},
-        {no: "😺", date: "2025-02-01", amount: 500},
-        {no: "😺", date: "2025-03-01", amount: 600},
-    ]
+
     return (
         <TableStyled>
             <Thead
                 headers={headers}
             />
             <Tbody 
-                data={data}
+                data={props.data}
             />
         </TableStyled>
     )

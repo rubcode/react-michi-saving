@@ -34,6 +34,16 @@ function FormSaving({...props}) {
             return
         }
         const savings = props.savings + parseFloat(savingsMount)
+        const today = new Date()
+        const date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear()
+        const contribution = {  
+            no: "😺",
+            date: date,
+            mount: parseInt(savingsMount),
+        }
+
+        props.setContributionsList((prev) => [...prev, contribution])
+        console.log(props.contributionsList)
         props.setSavings(savings)
         localStorage.setItem("michi-savings", savings)
 
