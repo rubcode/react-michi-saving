@@ -1,5 +1,6 @@
 import ContainerSaving from "./components/containers/Containers/container-saving";
 import ContainerGoal from "./components/containers/Containers/container-goal";
+import ContainerViewSaving from "./components/containers/Containers/container-view-saving";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ContainerGoal/>} />
           <Route path="saving" element={<ContainerSaving/>} />
+          <Route path="views" element={<ContainerViewSaving/>} />
         </Routes>
       </Router>
     </div>

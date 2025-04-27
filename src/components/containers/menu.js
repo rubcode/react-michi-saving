@@ -46,7 +46,7 @@ function Menu({className}) {
                 <a href="/">Actualizar Meta</a>
             </li>
             <li>
-                <a href="#!">Ver mis ahorros</a>
+                <a href="views">Ver mis ahorros</a>
             </li>
         </MenuStyled>
     )
