@@ -10,7 +10,6 @@ const FormSavingStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
@@ -43,7 +42,7 @@ function FormSaving({...props}) {
     return (
         <FormSavingStyled onSubmit={handleSubmit} ref={form}>
             <InputText
-                placeholder='Ingresse los ahorro de hoy'
+                placeholder='Ingrese los ahorro de hoy'
                 name='savingsMount'
                 type='text'
                 value={(savingsMount === 0) ? "" : savingsMount}

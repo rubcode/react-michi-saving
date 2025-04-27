@@ -10,7 +10,7 @@ const InputText = styled.input`
     border-radius: 0.5rem;
     font: var(--body2-regular);
     flex: 1;
-    min-width: 300px;
+    max-width: 300px;
     @media (max-width: 600px) {
         &{
             width: 100%;

@@ -12,7 +12,6 @@ const FormGoalStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;

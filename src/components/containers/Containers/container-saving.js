@@ -6,13 +6,13 @@ import Menu from '../menu'
 
 const ContainerSavingStyled = styled.div`
     width: 80%;
-    height: 100vh;
+    height: calc(100vh - 80px);
     margin: 0 auto;
     padding: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-direction: column;
 
     img{
@@ -54,6 +54,7 @@ function ContainerSaving() {
                 <h1 className="title">Registre sus michi coins 😺💰</h1>
                 <img src={pathImg} alt="Michi" />
                 <h2 className="subtitle">Total Ahorrado: ${savings.toFixed(2)}</h2>
+                <h2 className="subtitle">Meta de ahorro: ${parseInt(goal).toFixed(2)}</h2>
                 <FormSaving 
                     savings={savings}
                     setSavings={setSavings}

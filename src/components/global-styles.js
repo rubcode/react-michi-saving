@@ -53,7 +53,7 @@ const GlobalStylesStyled = createGlobalStyle`
     }
     .subtitle{
         margin: 0;
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-family: Roboto;
         color: var(--primaryColor);
         letter-spacing: 2px;
