@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import Thead from './thead'
 import Tbody from './tbody'
+import { useContext } from 'react'
+import { ContributionsContext } from '../../contexts/contributionsContext'
 
 const TableStyled = styled.table`
     width: 100%;
@@ -16,16 +18,17 @@ const TableStyled = styled.table`
     }
 `
 
-function Table({...props}) {
+function Table() {
     const headers = ["No","Fecha","Monto"]
-
+    const { contributionsList } = useContext(ContributionsContext);
+    console.log("Tabla", contributionsList);
     return (
         <TableStyled>
             <Thead
                 headers={headers}
             />
             <Tbody 
-                data={props.data}
+                data={contributionsList}
             />
         </TableStyled>
     )

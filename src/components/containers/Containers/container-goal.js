@@ -34,6 +34,7 @@ function ContainerGoal() {
     useEffect(() => {
         localStorage.removeItem("michi-goal");
         localStorage.removeItem("michi-savings");
+        localStorage.removeItem("contributionsList");
         const goal = localStorage.getItem("michi-goal"); 
         if (goal !== undefined && goal !== null) {
           navigate('/saving');

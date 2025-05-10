@@ -7,15 +7,15 @@ import { ContributionsProvider } from "./contexts/contributionsContext";
 function App() {
   return (
     <div className="App">
+    <Router>
       <ContributionsProvider>
-        <Router>
           <Routes>
             <Route path="/" element={<ContainerGoal/>} />
             <Route path="saving" element={<ContainerSaving/>} />
             <Route path="views" element={<ContainerViewSaving/>} />
           </Routes>
-        </Router>
       </ContributionsProvider>
+    </Router>
     </div>
   );
 }

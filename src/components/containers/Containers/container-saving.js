@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import FormSaving from '../../forms/form-saving'
-import { useState,useEffect, useContext } from 'react'
-import { ContributionsContext } from '../../../contexts/contributionsContext'
+import { useState,useEffect } from 'react'
 import Navbar from './navbar'
 import Menu from '../menu'
 
@@ -36,7 +35,6 @@ function ContainerSaving() {
     const [savings, setSavings] = useState(0)
     const [activeMenu, setActiveMenu] = useState(false);
     const className = activeMenu ? 'active' : '';
-    const { contributionsList, setContributionsList } = useContext(ContributionsContext);
     useEffect(() => {
         const savingsLocal = localStorage.getItem("michi-savings");
         if (savingsLocal !== undefined && savingsLocal !== null) {
@@ -60,8 +58,6 @@ function ContainerSaving() {
                 <FormSaving 
                     savings={savings}
                     setSavings={setSavings}
-                    contributionsList={contributionsList}
-                    setContributionsList={setContributionsList}
                 />
             </ContainerSavingStyled>
         </>

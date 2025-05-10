@@ -18,7 +18,6 @@ const TbodyStyled = styled.tbody`
 `
 
 function Tbody({data}) {
-    console.log(data)
     return (
         <TbodyStyled>
             {

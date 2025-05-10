@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import Navbar from './navbar'
 import Menu from '../menu'
-import { useState,useContext } from 'react'
-import { ContributionsContext } from '../../../contexts/contributionsContext'
+import { useState } from 'react'
 import Table from '../../tables/table'
 
 const ContainerViewSavingStyled = styled.div`
@@ -28,16 +27,13 @@ const ContainerViewSavingStyled = styled.div`
 function ContainerViewSaving() {
     const [activeMenu, setActiveMenu] = useState(false);
     const className = activeMenu ? 'active' : '';
-    const { contributionsList } = useContext(ContributionsContext);
     return (
         <>
             <Navbar setActiveMenu={setActiveMenu}/>
             <Menu className={className} />
             <ContainerViewSavingStyled>
                 <h1 className="title">Tus Ahorros 😺💰</h1>
-                <Table
-                    data={contributionsList}
-                />
+                <Table/>
             </ContainerViewSavingStyled>
         </>
         

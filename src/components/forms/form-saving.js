@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import {Button} from './button'
 import InputText from './input-text'
-import {useState, useRef} from 'react'
+import {useState, useRef, useContext} from 'react'
+import { ContributionsContext } from '../../contexts/contributionsContext'
 
 const FormSavingStyled = styled.form`
     width: 100%;
@@ -25,6 +26,9 @@ const FormSavingStyled = styled.form`
 
 function FormSaving({...props}) {
     const [savingsMount, setSavingsMount] = useState(0)
+    const { contributionsList, setContributionsList } = useContext(ContributionsContext);
+    console.log("Formulario", contributionsList);
+
     const form = useRef(null)
 
     const handleSubmit = (e) => {   
@@ -39,11 +43,10 @@ function FormSaving({...props}) {
         const contribution = {  
             no: "😺",
             date: date,
-            mount: parseInt(savingsMount),
+            amount:`$${parseFloat(savingsMount).toFixed(2)}`,
         }
-
-        props.setContributionsList((prev) => [...prev, contribution])
-        console.log(props.contributionsList)
+        console.log(contribution)
+        setContributionsList((prev) => [...prev, contribution])
         props.setSavings(savings)
         localStorage.setItem("michi-savings", savings)
 
