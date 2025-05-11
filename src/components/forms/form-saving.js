@@ -26,8 +26,7 @@ const FormSavingStyled = styled.form`
 
 function FormSaving({...props}) {
     const [savingsMount, setSavingsMount] = useState(0)
-    const { contributionsList, setContributionsList } = useContext(ContributionsContext);
-    console.log("Formulario", contributionsList);
+    const { setContributionsList } = useContext(ContributionsContext);
 
     const form = useRef(null)
 
@@ -45,7 +44,6 @@ function FormSaving({...props}) {
             date: date,
             amount:`$${parseFloat(savingsMount).toFixed(2)}`,
         }
-        console.log(contribution)
         setContributionsList((prev) => [...prev, contribution])
         props.setSavings(savings)
         localStorage.setItem("michi-savings", savings)

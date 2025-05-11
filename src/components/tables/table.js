@@ -21,7 +21,6 @@ const TableStyled = styled.table`
 function Table() {
     const headers = ["No","Fecha","Monto"]
     const { contributionsList } = useContext(ContributionsContext);
-    console.log("Tabla", contributionsList);
     return (
         <TableStyled>
             <Thead
