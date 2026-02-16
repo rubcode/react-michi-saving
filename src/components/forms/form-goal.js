@@ -12,9 +12,15 @@ const FormGoalStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
+    .box{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
     @media (max-width: 600px) {
         &{
             flex-direction: column;
@@ -27,6 +33,7 @@ const FormGoalStyled = styled.form`
 function FormGoal({...props}) {
     const navigate = useNavigate();
     const [goalMount, setGoalMount] = useState(0)
+    const [goalName, setGoalName] = useState("")
     const form = useRef(null)
 
     const handleSubmit = (e) => {   
@@ -35,20 +42,39 @@ function FormGoal({...props}) {
             alert("Ingrese un monto mayor a 0")
             return
         }
+        if (goalName.trim() === ""){
+            alert("Ingrese un nombre para su meta")
+            return
+        }
         localStorage.setItem("michi-goal", goalMount)
+        localStorage.setItem("michi-goal-name", goalName)
         setGoalMount("")
+        setGoalName("")
         navigate('/saving');
     }
     return (
         <FormGoalStyled onSubmit={handleSubmit} ref={form}>
+            <div className='box'>
             <InputText
-                placeholder='Ingresse su meta de ahorro'
-                name='goalMount'
-                type='text'
-                value={(goalMount === 0) ? "" : goalMount}
-                onChange={(e) => setGoalMount(e.target.value)}
+                    placeholder='Ingrese nombre de su ahorro'
+                    name='goalName'
+                    type='text'
+                    value={goalName}
+                    onChange={(e) => setGoalName(e.target.value)}
 
-            />
+                />
+            </div>
+            <div className='box'>
+                <InputText
+                    placeholder='Ingrese monto de su ahorro'
+                    name='goalMount'
+                    type='text'
+                    value={(goalMount === 0) ? "" : goalMount}
+                    onChange={(e) => setGoalMount(e.target.value)}
+
+                />
+            </div>
+            
             <Button
                 text='Guardar Meta'
             />

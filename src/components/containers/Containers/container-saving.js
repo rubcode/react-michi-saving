@@ -41,7 +41,8 @@ function ContainerSaving() {
           setSavings(parseFloat(savingsLocal));
         }
     }, [])
-    const goal = localStorage.getItem("michi-goal")
+    const goal = localStorage.getItem("michi-goal");
+    const goalName = localStorage.getItem("michi-goal-name");
     const percentage = (savings /goal) * 100
     const pathImg = percentage <= 25 ? "/assets/thin.png" : 
                     percentage <= 50 ? "/assets/normal.png" :
@@ -54,7 +55,7 @@ function ContainerSaving() {
                 <h1 className="title">Registre sus michi coins 😺💰</h1>
                 <img src={pathImg} alt="Michi" />
                 <h2 className="subtitle">Total Ahorrado: ${savings.toFixed(2)}</h2>
-                <h2 className="subtitle">Meta de ahorro: ${parseInt(goal).toFixed(2)}</h2>
+                <h2 className="subtitle"> {goalName}: ${parseInt(goal).toFixed(2)}</h2>
                 <FormSaving 
                     savings={savings}
                     setSavings={setSavings}

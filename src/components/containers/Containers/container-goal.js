@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect,useState } from 'react'
 import Navbar from './navbar';
 import Menu from '../menu';
+import { getData } from '../../../services/data';
 
 const ContainerGoalStyled = styled.div`
     width: 80%;
@@ -39,6 +40,13 @@ function ContainerGoal() {
           navigate('/saving');
         }
       }, [navigate]);
+
+    useEffect(() => {
+        getData().then((data) => {
+            console.log(data);
+        })
+    }, []);
+
     return (
         <>
             <Navbar 
