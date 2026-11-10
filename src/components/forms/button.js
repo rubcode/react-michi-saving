@@ -1,71 +1,79 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const ButtonStyled = styled.div`
-    background: var(--primaryColor);
-    color: var(--white);
-    border: 1px solid var(--primaryColor);
-    border-radius: 0.5rem;
-    padding-block: 0.75rem;
-    min-inline-size: 300px;
-    font: var(--button);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: var(--accent);
+    color: var(--onAccent);
+    border: none;
+    border-radius: var(--radius-control);
+    padding: 0.9rem 1.75rem;
+    font: 600 1rem var(--font);
     cursor: pointer;
-    opacity: 0.8;
     text-decoration: none !important;
-
-    &.buttonRouded{ 
-        border-radius: 50%;
-        inline-size: 50px;
-        min-inline-size: 50px;
-        min-block-size: 50px;
-        block-size: 50px;
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    transition: transform .15s ease, filter .15s ease;
 
     &:hover{
-        opacity: 1;
+        filter: brightness(1.05);
+    }
+    &:active{
+        transform: scale(0.98);
+    }
+
+    &.buttonFloating{
+        position: fixed;
+        bottom: 96px;
+        right: 1.25rem;
+        width: auto;
+        inline-size: 56px;
+        min-inline-size: 56px;
+        block-size: 56px;
+        border-radius: 50%;
+        padding: 0;
+        box-shadow: var(--shadow);
+        font-size: 1.5rem;
+        z-index: 9;
+    }
+
+    &.buttonGhost{
+        background: transparent;
+        color: var(--textPrimary);
+        border: 1px solid var(--border);
+    }
+
+    &.buttonDanger{
+        background: transparent;
+        color: var(--danger);
+        border: 1px solid var(--danger);
+    }
+
+    &.buttonAuto{
+        width: auto;
+        padding: 0.6rem 1.1rem;
+        font-size: 0.9rem;
     }
 `
 
-function Button({text,link,type,className,onClick,dataID}) {
+function Button({text, link, to, type, className, onClick, dataID, children, ...rest}) {
+    const content = children || text
+    if (to) {
+        return (
+            <ButtonStyled as={Link} to={to} className={className} onClick={onClick} dataID={dataID} {...rest}>
+                {content}
+            </ButtonStyled>
+        )
+    }
     const component = link ? "a" : "button"
     return (
-        <ButtonStyled as={component} type={type} href={link} className={className} onClick={onClick} dataID={dataID}>
-            {text}
+        <ButtonStyled as={component} type={type} href={link} className={className} onClick={onClick} dataID={dataID} {...rest}>
+            {content}
         </ButtonStyled>
     )
 }
 
-export const ButtonIcon = styled(Button)`
-    background-color: transparent;
-    color: var(--primaryColor);
-    border: none;
-    font-size: 1.8rem;
-    min-inline-size: 50px;
-    &:hover{
-        color: var(--accentColor);
-    }
-    @media (max-width: 750px) {
-        &{
-            font-size: 1.3rem;
-        }
-    }
-`
-
-export const ButtonContrast = styled(Button)`
-    background-color: var(--accentColor);
-    color: var(--white);
-    border: 1px solid var(--accentColor);
-    &:hover{
-        background-color: var(--white);
-        color: var(--accentColor);
-    }
-`
-
-export {
-    Button
-} 
+export { Button }
+export default Button

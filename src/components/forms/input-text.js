@@ -1,26 +1,19 @@
 import styled from 'styled-components'
 
 const InputText = styled.input`
-    border: 1px solid var(--grey);
-    color: var(--white);
-    background: #21293c;
-    outline: none;
+    border: 1px solid var(--border);
+    color: var(--textPrimary);
+    background: var(--surface);
+    caret-color: var(--accent);
     padding-inline: 1rem;
-    padding-block: .5rem;
-    border-radius: 0.5rem;
-    font: var(--body2-regular);
-    flex: 1;
-    max-width: 300px;
-    @media (max-width: 600px) {
-        &{
-            width: 100%;
-            max-width: 300px;
-        }
-    
+    padding-block: .85rem;
+    border-radius: var(--radius-control);
+    font: var(--bodyRegular);
+    width: 100%;
+
+    &::placeholder{
+        color: var(--textSecondary);
     }
-
-
 `
-
 
 export default InputText
